@@ -1,38 +1,39 @@
 name: sec-edgar-mcp
 displayName: SEC EDGAR Financial Data
 description: |
-  Access SEC EDGAR financial data directly from AI assistants. Search companies, pull structured
-  financials from 10-K/10-Q filings, track insider trades, and full-text search across all SEC filings.
-  No API key required — uses free public SEC data.
+  SEC EDGAR financial data tools for AI assistants. Search companies, pull financial statements,
+  browse filings, track insider trades, and view stock price history.
+  Free — no API key required (uses public SEC API).
 version: 1.0.0
 license: MIT
 categories:
   - finance
-  - investment
-  - data
+  - research
+  - compliance
 tags:
   - sec
   - edgar
-  - financials
-  - 10-K
-  - earnings
-  - insider-trading
+  - finance
   - stocks
-  - investment
+  - 10-K
+  - insider-trading
+  - financial-statements
 startCommand:
   type: http
+  url: https://sec-edgar-mcp-production-1f82.up.railway.app/mcp
   configSchema:
     type: object
     properties:
       secUserAgent:
         type: string
-        title: SEC User-Agent
-        description: "Required by SEC: your name and email (e.g. 'MyApp/1.0 me@example.com')"
+        title: SEC User Agent
+        description: "Required by SEC. Format: 'Company Name admin@example.com'"
       apiKey:
         type: string
         title: API Key (Optional)
         description: "Remove the 10 calls/day limit."
-    required: []
+    required:
+      - secUserAgent
   exampleConfig:
-    secUserAgent: "MyApp/1.0 contact@example.com"
+    secUserAgent: "MyApp admin@example.com"
     apiKey: "km_your_key_here"
